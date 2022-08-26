@@ -3,6 +3,8 @@ using UnityEngine;
 
 public class CardSpawner : MonoBehaviour
 {
+    [SerializeField] private CardChecker _cardChecker;
+
     [SerializeField] private Card _card;
     [SerializeField] private CardData[] _cardData;
     
@@ -17,8 +19,15 @@ public class CardSpawner : MonoBehaviour
         {
             InitCard(card);
         }
+        
+        _cardChecker.OnCardsGuessed += CheckCardsGuessed;
+        _cardChecker.OnUpdateGame += UpdateCards;
+    }
 
-        GlobalEventSystem.OnUpdateGame.AddListener(UpdateCards);
+    private void OnDestroy()
+    {
+        _cardChecker.OnCardsGuessed -= CheckCardsGuessed;
+        _cardChecker.OnUpdateGame -= UpdateCards;
     }
 
     private void InitCardData()
@@ -37,16 +46,10 @@ public class CardSpawner : MonoBehaviour
 
     private void InitCard(CardData cardData)
     {
-        Card card = Instantiate(_card, transform); 
+        Card card = Instantiate(_card, transform);
+        card.Init(cardData.Id, cardData.FrontSprite, cardData.BackSprite);
 
-        card.State = new ClosedCardState();
-        card.Id = cardData.Id;
-
-        card.BackSprite = cardData.BackSprite;
-        card.FrontSprite = cardData.FrontSprite;
-
-        _allCards.Add(card);
-        card.Close();
+        _allCards.Add(card);        
     }
 
     private void Sort(List<CardData> allCardsData)
@@ -59,20 +62,25 @@ public class CardSpawner : MonoBehaviour
             allCardsData[tempIndex] = temp;
         }
     }
-  
+
     private void UpdateCards()
     {
         Sort(_allCardsData);
 
-        for(int i=0; i < _allCardsData.Count; i++)
-        {
-            _allCards[i].State = new ClosedCardState();
-            _allCards[i].Id = _allCardsData[i].Id;
-
-            _allCards[i].BackSprite = _allCardsData[i].BackSprite;
-            _allCards[i].FrontSprite = _allCardsData[i].FrontSprite;
-
-            _allCards[i].Close();
+        for (int i = 0; i < _allCardsData.Count; i++)
+        {            
+            _allCards[i].Init(_allCardsData[i].Id, _allCardsData[i].FrontSprite, _allCardsData[i].BackSprite);
         }
+    }
+
+    private bool CheckCardsGuessed()
+    {
+        foreach(Card card in _allCards)
+        {
+            if (card.TryOpen())
+                return false;
+        }
+
+        return true;
     }
 }

@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public static class PlayerOptions
+public class PlayerOptions
 {
     public static float BestScore
     {
@@ -11,9 +11,9 @@ public static class PlayerOptions
         set
         {
             if (!PlayerPrefs.HasKey("BestScore"))            
-                PlayerPrefs.SetFloat("BestScore", float.MaxValue);
+                PlayerPrefs.SetFloat("BestScore", 0);
             
-            if (value < PlayerPrefs.GetFloat("BestScore"))
+            if (value > PlayerPrefs.GetFloat("BestScore"))
                 PlayerPrefs.SetFloat("BestScore", value);
         }
     }

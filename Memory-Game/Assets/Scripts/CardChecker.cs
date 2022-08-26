@@ -1,23 +1,39 @@
+using System;
 using System.Collections;
 using UnityEngine;
 
 public class CardChecker : MonoBehaviour
 {
+    public event Func<bool> OnCardsGuessed;
+    public event Action OnUpdateGame;
+
+    public bool IsStartGame => _isStartGame;
+    private bool _isStartGame;
+
     private Card _anotherCard;
-    private bool _isCardInProcess;
-    private int _countGuesses;
+    private bool _isCardsInProcessComparison;
 
     private void Start()
     {
-        CardClicker.OnCardClick.AddListener(CardCheck);        
+        CardClicker.OnCardClick += CardCheck;    
+    }
+
+    private void OnDestroy()
+    {
+        CardClicker.OnCardClick -= CardCheck;
     }
 
     private void CardCheck(Card card)
     {
-        if (_isCardInProcess || card.State is GuessedCardState || card.State is OpenedCardState)
+        if (!_isStartGame)
+        {
+            _isStartGame = true;
+        }
+
+        if (!card.TryOpen() || _isCardsInProcessComparison)
         { 
             return;
-        }
+        }        
 
         card.Open();
 
@@ -27,29 +43,26 @@ public class CardChecker : MonoBehaviour
             return;
         }
 
-        StartCoroutine(CardComparison(card));
+        StartCoroutine(CardsComparison(card));
     }
 
-    private IEnumerator CardComparison(Card card)
+    private IEnumerator CardsComparison(Card card)
     {
-        _isCardInProcess = true;
+        _isCardsInProcessComparison = true;
 
         if (_anotherCard.Id == card.Id)
         {
-            _countGuesses += 2;
-
             _anotherCard.Guess();
             card.Guess();
 
-            if(_countGuesses == 12)
-            {
-                CardClicker.IsStartGame = false;
-                _countGuesses = 0;
-
-                PlayerOptions.BestScore = Score.TimeScore;
-                
+            if(OnCardsGuessed.Invoke())
+            {                
                 yield return new WaitForSeconds(.3f);
-                GlobalEventSystem.OnUpdateGame.Invoke();                
+
+                PlayerOptions.BestScore = Score.TempLVL;
+                _isStartGame = false;
+
+                OnUpdateGame?.Invoke();                
             }
         }
         else
@@ -60,6 +73,6 @@ public class CardChecker : MonoBehaviour
         }
 
         _anotherCard = null;
-        _isCardInProcess = false;
+        _isCardsInProcessComparison = false;
     }
 }

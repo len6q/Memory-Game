@@ -1,17 +1,34 @@
-public class GuessedCardState : ICardState
+using UnityEngine;
+using UnityEngine.UI;
+
+public class GuessedCardState : BaseState
 {
-    public void Close(Card card)
+    private Sprite _tempSprite;
+    public GuessedCardState(Image cardView, ICardStateSwitcher stateCardSwitcher, Sprite backSprite)
+        : base(cardView, stateCardSwitcher)
     {
-        return;
+        _tempSprite = backSprite;
     }
 
-    public void Guess(Card card)
+    public override void Close()
     {
-        return;
+        _cardView.sprite = _tempSprite;
+
+        _stateCardSwitcher.SwitchState<ClosedCardState>();
     }
 
-    public void Open(Card card)
+    public override void Guess()
     {
-        return;
+        throw new System.NotImplementedException();
+    }
+
+    public override void Open()
+    {
+        throw new System.NotImplementedException();
+    }
+
+    public override bool TryOpen()
+    {
+        return false;
     }
 }
