@@ -78,9 +78,10 @@ public class CardSpawner : MonoBehaviour
         foreach(Card card in _allCards)
         {
             if (card.TryOpen())
+            {
                 return false;
+            }
         }
-
         return true;
     }
 }

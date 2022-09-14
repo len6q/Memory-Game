@@ -16,7 +16,7 @@ public class GameView : MonoBehaviour
 
     private void Update()
     {
-        if(!_cardChecker.IsStartGame && Score.TempLVL == 1)
+        if(_cardChecker.IsStartGame == false && Score.TempLVL == 1)
         {
             return;
         }        

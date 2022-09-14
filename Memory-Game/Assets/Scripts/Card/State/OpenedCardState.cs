@@ -3,7 +3,7 @@ using UnityEngine.UI;
 
 public class OpenedCardState : BaseState
 {
-    private Sprite _tempSprite;
+    private readonly Sprite _tempSprite;
 
     public OpenedCardState(Image cardView, ICardStateSwitcher stateCardSwitcher, Sprite backSprite)
         : base(cardView, stateCardSwitcher)
@@ -25,7 +25,7 @@ public class OpenedCardState : BaseState
 
     public override void Open()
     {
-        throw new System.NotImplementedException();
+        
     }
 
     public override bool TryOpen()

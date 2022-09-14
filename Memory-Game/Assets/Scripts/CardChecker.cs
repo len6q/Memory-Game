@@ -25,12 +25,12 @@ public class CardChecker : MonoBehaviour
 
     private void CardCheck(Card card)
     {
-        if (!_isStartGame)
+        if (_isStartGame == false)
         {
             _isStartGame = true;
         }
 
-        if (!card.TryOpen() || _isCardsInProcessComparison)
+        if (card.TryOpen() == false || _isCardsInProcessComparison)
         { 
             return;
         }        

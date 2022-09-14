@@ -3,7 +3,8 @@ using UnityEngine.UI;
 
 public class ClosedCardState : BaseState
 {
-    private Sprite _tempSprite;
+    private readonly Sprite _tempSprite;
+   
     public ClosedCardState(Image cardView, ICardStateSwitcher stateCardSwitcher, Sprite frontSprite)
         : base(cardView, stateCardSwitcher)
     {
@@ -12,12 +13,12 @@ public class ClosedCardState : BaseState
 
     public override void Close()
     {
-        throw new System.NotImplementedException();
+        
     }
 
     public override void Guess()
     {
-        throw new System.NotImplementedException();
+        
     }
 
     public override void Open()

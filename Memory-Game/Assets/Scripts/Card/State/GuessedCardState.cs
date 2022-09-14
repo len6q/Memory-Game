@@ -3,7 +3,8 @@ using UnityEngine.UI;
 
 public class GuessedCardState : BaseState
 {
-    private Sprite _tempSprite;
+    private readonly Sprite _tempSprite;
+
     public GuessedCardState(Image cardView, ICardStateSwitcher stateCardSwitcher, Sprite backSprite)
         : base(cardView, stateCardSwitcher)
     {
@@ -19,12 +20,12 @@ public class GuessedCardState : BaseState
 
     public override void Guess()
     {
-        throw new System.NotImplementedException();
+        
     }
 
     public override void Open()
     {
-        throw new System.NotImplementedException();
+        
     }
 
     public override bool TryOpen()
