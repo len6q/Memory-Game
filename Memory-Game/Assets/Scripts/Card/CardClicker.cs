@@ -8,11 +8,6 @@ public class CardClicker : MonoBehaviour, IPointerClickHandler
 
     public static event Action<Card> OnCardClick;
 
-    public static bool IsFirstClick { get; set; } = false;
-
-    public void OnPointerClick(PointerEventData eventData)
-    {
-        if(IsFirstClick == false) IsFirstClick = true;
-        OnCardClick?.Invoke(_card);
-    }
+    public void OnPointerClick(PointerEventData eventData) =>
+        OnCardClick?.Invoke(_card);    
 }

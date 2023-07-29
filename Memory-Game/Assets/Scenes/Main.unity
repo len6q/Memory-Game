@@ -337,6 +337,7 @@ GameObject:
   - component: {fileID: 301514714}
   - component: {fileID: 301514713}
   - component: {fileID: 301514716}
+  - component: {fileID: 301514717}
   m_Layer: 0
   m_Name: Scene Context
   m_TagString: Untagged
@@ -356,6 +357,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3f385eac488d2974bbdfad5d4a8690b3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _levelConfig: {fileID: 11400000, guid: 6508b7ab3e4b6d2418999d8e6f96ffd6, type: 2}
 --- !u!114 &301514714
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -372,6 +374,7 @@ MonoBehaviour:
   _monoInstallers:
   - {fileID: 301514713}
   - {fileID: 301514716}
+  - {fileID: 301514717}
   _installerPrefabs: []
   _autoRun: 1
   OnPreInstall:
@@ -424,8 +427,21 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 7324b7040af95e14fbcd426903878109, type: 2}
   - {fileID: 11400000, guid: 6d0ef01d08dc18343a18bca87cd052fd, type: 2}
   - {fileID: 11400000, guid: d1d90af5920bad844a999251bdb8b28b, type: 2}
-  _checker: {fileID: 4010195160516512039}
+  _checker: {fileID: 4010195160516512060}
   _parentTransform: {fileID: 4010195160516512056}
+--- !u!114 &301514717
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 301514712}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 17b81ad4cec984c418a219fed4373122, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _defenderHud: {fileID: 1916157084}
 --- !u!1 &311071819
 GameObject:
   m_ObjectHideFlags: 0
@@ -854,18 +870,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4010195160516512057}
   m_CullTransparentMesh: 1
---- !u!114 &4010195160516512039
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4010195160516512057}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 683c6fbd84fd7384cb7b5b2f9742713a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!224 &4010195160516512056
 RectTransform:
   m_ObjectHideFlags: 0
@@ -898,7 +902,7 @@ GameObject:
   - component: {fileID: 4010195160516512037}
   - component: {fileID: 4010195160516512058}
   - component: {fileID: 4010195160516512059}
-  - component: {fileID: 4010195160516512039}
+  - component: {fileID: 4010195160516512060}
   m_Layer: 5
   m_Name: Cards Field
   m_TagString: Untagged
@@ -960,3 +964,15 @@ MonoBehaviour:
   m_Spacing: {x: 25, y: 25}
   m_Constraint: 0
   m_ConstraintCount: 3
+--- !u!114 &4010195160516512060
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4010195160516512057}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: faccbc4ad629ae64888040728524cdeb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

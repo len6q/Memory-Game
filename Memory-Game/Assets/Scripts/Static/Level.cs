@@ -1,43 +1,45 @@
 using System;
-using Zenject;
 
-public class Level : IInitializable, ITickable, IDisposable
+public class Level
 {
-    private readonly CardChecker _cardChecker;
-    private readonly float _timeCache = 60f;
+    public event Action OnLevelUp;
+    public event Action OnRestart;
 
-    public Level(CardChecker cardChecker)
+    private readonly CardChecker _cardChecker;
+    private readonly LevelConfig _config;    
+
+    public Level(CardChecker cardChecker, LevelConfig config)
     {
         _cardChecker = cardChecker;
+        _config = config;
+
+        Current = _config.CurrentLevel;        
     }
 
     public float Time { get; private set; }
-    public int Current { get; private set; } = 1;
+    public int Current { get; private set; }
     
-    public void Tick()
+    public void UpdateTime()
     {
-        if (CardClicker.IsFirstClick == false)
-        {
-            Time = _timeCache / Current;
-
-            if (Time < 10) Time = 10;
-            
-            return;
-        }
-
-        if (Time <= 0) SceneLoader.LoadMain();
+        if (Time <= 0) OnRestart?.Invoke();
         
         Time -= UnityEngine.Time.deltaTime;
     }
 
-    public void Dispose() => _cardChecker.OnUpdateGame -= LevelUp;
-    
-    public void Initialize() => _cardChecker.OnUpdateGame += LevelUp;
+    public void Unload() => _cardChecker.OnUpdateGame -= LevelUp;
+
+    public void Load()
+    {        
+        Time = _config.TimeValue / Current;
+        if (Time < 10) Time = 10;
+
+        _cardChecker.OnUpdateGame += LevelUp;
+    }
 
     private void LevelUp()
-    {
-        CardClicker.IsFirstClick = false;
+    {        
         PlayerOptions.BestScore = Current;
         Current++;
+        OnLevelUp?.Invoke();
     }
 }

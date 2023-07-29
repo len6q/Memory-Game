@@ -1,7 +1,7 @@
 using UnityEngine;
 using UnityEngine.UI;
 
-public class ClosedCardState : BaseState
+public class ClosedCardState : BaseCardState
 {
     private readonly Sprite _tempSprite;
    

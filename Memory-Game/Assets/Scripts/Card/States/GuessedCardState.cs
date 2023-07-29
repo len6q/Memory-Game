@@ -1,7 +1,7 @@
 using UnityEngine;
 using UnityEngine.UI;
 
-public class GuessedCardState : BaseState
+public class GuessedCardState : BaseCardState
 {
     private readonly Sprite _tempSprite;
 

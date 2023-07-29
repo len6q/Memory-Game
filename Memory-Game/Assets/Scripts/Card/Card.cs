@@ -14,8 +14,8 @@ public class Card : MonoBehaviour, ICardStateSwitcher
     private Sprite _frontSprite;
     private Sprite _backSprite;
 
-    private BaseState _currentState;
-    private List<BaseState> _allStates;
+    private BaseCardState _currentState;
+    private List<BaseCardState> _allStates;
 
     public void Init(int id, Sprite frontSprite, Sprite backSprite)
     {
@@ -23,7 +23,7 @@ public class Card : MonoBehaviour, ICardStateSwitcher
         _frontSprite = frontSprite;
         _backSprite = backSprite;
 
-        _allStates = new List<BaseState>()
+        _allStates = new List<BaseCardState>()
         {
             new ClosedCardState(_cardView, this, _frontSprite),
             new OpenedCardState(_cardView, this, _backSprite),
@@ -53,7 +53,7 @@ public class Card : MonoBehaviour, ICardStateSwitcher
         return _currentState.TryOpen();
     }
 
-    public void SwitchState<T>() where T : BaseState
+    public void SwitchState<T>() where T : BaseCardState
     {
         var state = _allStates.FirstOrDefault(s => s is T);        
         _currentState = state;
