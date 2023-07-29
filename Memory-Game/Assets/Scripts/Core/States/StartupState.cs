@@ -6,6 +6,7 @@ public class StartupState : BaseGameState
 
     public override void Enter()
     {
+        _level.LoadStartupValues();
         _defenderHud.SetStartupInfo();
         CardClicker.OnCardClick += CardClick;
     }

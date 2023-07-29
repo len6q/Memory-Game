@@ -11,9 +11,7 @@ public class Level
     public Level(CardChecker cardChecker, LevelConfig config)
     {
         _cardChecker = cardChecker;
-        _config = config;
-
-        Current = _config.CurrentLevel;        
+        _config = config;        
     }
 
     public float Time { get; private set; }
@@ -21,8 +19,7 @@ public class Level
     
     public void UpdateTime()
     {
-        if (Time <= 0) OnRestart?.Invoke();
-        
+        if (Time <= 0) OnRestart?.Invoke();        
         Time -= UnityEngine.Time.deltaTime;
     }
 
@@ -41,5 +38,10 @@ public class Level
         PlayerOptions.BestScore = Current;
         Current++;
         OnLevelUp?.Invoke();
+    }
+
+    public void LoadStartupValues()
+    {
+        Current = _config.CurrentLevel;
     }
 }
