@@ -7,34 +7,23 @@ public class CardChecker : MonoBehaviour
     public event Func<bool> OnCardsGuessed;
     public event Action OnUpdateGame;
 
-    public bool IsStartGame => _isStartGame;
-    private bool _isStartGame;
-
     private Card _anotherCard;
     private bool _isCardsInProcessComparison;
-
+  
     private void Start()
     {
-        CardClicker.OnCardClick += CardCheck;    
+        CardClicker.OnCardClick += CheckCard;    
     }
 
     private void OnDestroy()
     {
-        CardClicker.OnCardClick -= CardCheck;
+        CardClicker.OnCardClick -= CheckCard;
     }
 
-    private void CardCheck(Card card)
-    {
-        if (_isStartGame == false)
-        {
-            _isStartGame = true;
-        }
-
-        if (card.TryOpen() == false || _isCardsInProcessComparison)
-        { 
-            return;
-        }        
-
+    private void CheckCard(Card card)
+    {  
+        if (card.TryOpen() == false || _isCardsInProcessComparison) return;
+        
         card.Open();
 
         if (_anotherCard == null)
@@ -57,11 +46,7 @@ public class CardChecker : MonoBehaviour
 
             if(OnCardsGuessed.Invoke())
             {                
-                yield return new WaitForSeconds(.3f);
-
-                PlayerOptions.BestScore = Score.TempLVL;
-                _isStartGame = false;
-
+                yield return new WaitForSeconds(.3f);                
                 OnUpdateGame?.Invoke();                
             }
         }
