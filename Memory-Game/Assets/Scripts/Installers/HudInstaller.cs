@@ -3,10 +3,12 @@ using Zenject;
 
 public class HudInstaller : MonoInstaller
 {
-    [SerializeField] private DefenderHud _defenderHud;
+    [SerializeField] private MainHud _mainHud;
+    [SerializeField] private StartupHud _startupHud;
 
     public override void InstallBindings()
     {
-        Container.BindInstance(_defenderHud);
+        Container.BindInstance(_startupHud);
+        Container.BindInstance(_mainHud);
     }
 }

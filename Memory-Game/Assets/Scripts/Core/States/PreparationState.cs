@@ -1,27 +1,30 @@
 public class PreparationState : BaseGameState
 {
-    public PreparationState(IGameStateSwitcher gameStateSwitcher, DefenderHud defenderHud, Level level)
-        : base(gameStateSwitcher, defenderHud, level)
-    { }
+    private readonly MainHud _mainHud;
+
+    public PreparationState(IGameStateSwitcher gameStateSwitcher, Level level, MainHud mainHud)
+        : base(gameStateSwitcher, level)
+    { 
+        _mainHud = mainHud;
+    }
 
     public override void Enter()
     {
         CardClicker.OnCardClick += CardClick;
         _level.Load();
 
-        _defenderHud.SetInGameText(_level.Current, _level.Time);
+        _mainHud.Open();
+        _mainHud.SetInGameText(_level.Current, _level.Time);
     }
 
     public override void Exit()
     {
         _level.Unload();
+        _mainHud.Close();
         CardClicker.OnCardClick -= CardClick;
     }
 
     public override void Tick() { }
 
-    private void CardClick(Card card)
-    {
-        _gameStateSwitcher.SwitchState<PlayingState>();
-    }
+    private void CardClick(Card card) => _gameStateSwitcher.SwitchState<PlayingState>();            
 }

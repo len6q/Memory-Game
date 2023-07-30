@@ -1,25 +1,27 @@
 public class StartupState : BaseGameState
 {
-    public StartupState(IGameStateSwitcher gameStateSwitcher, DefenderHud defenderHud, Level level) 
-        : base(gameStateSwitcher, defenderHud, level)
-    { }
+    private readonly StartupHud _startupHud;
+
+    public StartupState(IGameStateSwitcher gameStateSwitcher, Level level, StartupHud startupHud) 
+        : base(gameStateSwitcher, level)
+    {
+        _startupHud = startupHud;
+    }
 
     public override void Enter()
     {
         _level.LoadStartupValues();
-        _defenderHud.SetStartupInfo();
-        CardClicker.OnCardClick += CardClick;
+        _startupHud.Open();        
+        _startupHud.OnClick += StartGame;
     }
 
     public override void Exit()
     {
-        CardClicker.OnCardClick -= CardClick;
+        _startupHud.Close();
+        _startupHud.OnClick -= StartGame;
     }
 
     public override void Tick() { }
     
-    private void CardClick(Card card)
-    {
-        _gameStateSwitcher.SwitchState<PlayingState>();
-    }
+    private void StartGame() => _gameStateSwitcher.SwitchState<PreparationState>();    
 }

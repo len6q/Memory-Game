@@ -1,8 +1,12 @@
 public class PlayingState : BaseGameState
 {
-    public PlayingState(IGameStateSwitcher gameStateSwitcher, DefenderHud defenderHud, Level level)
-        : base(gameStateSwitcher, defenderHud, level)
-    { }
+    private readonly MainHud _mainHud;
+
+    public PlayingState(IGameStateSwitcher gameStateSwitcher, Level level, MainHud mainHud)
+        : base(gameStateSwitcher, level)
+    {
+        _mainHud = mainHud;
+    }
 
     public override void Enter()
     {
@@ -10,7 +14,8 @@ public class PlayingState : BaseGameState
         _level.OnLevelUp += LevelUp;
         _level.OnRestart += Restart;
         
-        _defenderHud.SetInGameText(_level.Current, _level.Time);
+        _mainHud.Open();
+        _mainHud.SetInGameText(_level.Current, _level.Time);
     }
 
     public override void Exit()
@@ -18,11 +23,13 @@ public class PlayingState : BaseGameState
         _level.Unload();
         _level.OnLevelUp -= LevelUp;
         _level.OnRestart -= Restart;
+        
+        _mainHud.Close();
     }
 
     public override void Tick()
     {
-        _defenderHud.SetTimerText(_level.Time);
+        _mainHud.SetTimerText(_level.Time);
         _level.UpdateTime();
     }
 

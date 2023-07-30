@@ -4,15 +4,17 @@ using Zenject;
 
 public class Game : IInitializable, ITickable, IGameStateSwitcher
 {
-    private readonly DefenderHud _defenderHud;
+    private readonly MainHud _mainHud;
+    private readonly StartupHud _startupHud;
     private readonly Level _level;
 
     private List<BaseGameState> _allStates;
     private BaseGameState _currentState;
     
-    public Game(DefenderHud defenderHud, Level level)
+    public Game(MainHud mainHud, StartupHud startupHud, Level level)
     {
-        _defenderHud = defenderHud;
+        _mainHud = mainHud;
+        _startupHud = startupHud;
         _level = level;
     }
 
@@ -20,9 +22,9 @@ public class Game : IInitializable, ITickable, IGameStateSwitcher
     {
         _allStates = new List<BaseGameState>
         {
-            new StartupState(this, _defenderHud, _level),
-            new PreparationState(this, _defenderHud, _level),
-            new PlayingState(this, _defenderHud, _level)            
+            new StartupState(this, _level, _startupHud),
+            new PreparationState(this, _level, _mainHud),
+            new PlayingState(this, _level, _mainHud)            
         };
         _currentState = _allStates[0];
         _currentState.Enter();

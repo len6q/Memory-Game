@@ -1,13 +1,11 @@
 public abstract class BaseGameState
 {
-    protected readonly IGameStateSwitcher _gameStateSwitcher;
-    protected readonly DefenderHud _defenderHud;
+    protected readonly IGameStateSwitcher _gameStateSwitcher;    
     protected readonly Level _level;
 
-    protected BaseGameState(IGameStateSwitcher gameStateSwitcher, DefenderHud defenderHud, Level level)
+    protected BaseGameState(IGameStateSwitcher gameStateSwitcher, Level level)
     {
-        _gameStateSwitcher = gameStateSwitcher;
-        _defenderHud = defenderHud;
+        _gameStateSwitcher = gameStateSwitcher;        
         _level = level;
     }
 

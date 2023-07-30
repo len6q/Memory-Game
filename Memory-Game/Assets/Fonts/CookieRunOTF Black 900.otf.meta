@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 16ecd22a6cda5834d97098e33f04d018
+guid: 23b51f8db84e2054a9f26baabda90bbe
 TrueTypeFontImporter:
   externalObjects: {}
   serializedVersion: 4
@@ -9,7 +9,7 @@ TrueTypeFontImporter:
   characterPadding: 1
   includeFontData: 1
   fontNames:
-  - Rubik Distressed
+  - CookieRunOTF
   fallbackFontReferences: []
   customCharacters: 
   fontRenderingMode: 0
