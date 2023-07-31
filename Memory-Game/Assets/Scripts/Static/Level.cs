@@ -3,7 +3,7 @@ using System;
 public class Level
 {
     public event Action OnLevelUp;
-    public event Action OnRestart;
+    public event Action OnLostGame;
 
     private readonly CardChecker _cardChecker;
     private readonly LevelConfig _config;    
@@ -19,7 +19,7 @@ public class Level
     
     public void UpdateTime()
     {
-        if (Time <= 0) OnRestart?.Invoke();        
+        if (Time <= 0) OnLostGame?.Invoke();        
         Time -= UnityEngine.Time.deltaTime;
     }
 

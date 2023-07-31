@@ -12,7 +12,7 @@ public class PlayingState : BaseGameState
     {
         _level.Load();
         _level.OnLevelUp += LevelUp;
-        _level.OnRestart += Restart;
+        _level.OnLostGame += Lose;
         
         _mainHud.Open();
         _mainHud.SetInGameText(_level.Current, _level.Time);
@@ -22,7 +22,7 @@ public class PlayingState : BaseGameState
     {      
         _level.Unload();
         _level.OnLevelUp -= LevelUp;
-        _level.OnRestart -= Restart;
+        _level.OnLostGame -= Lose;
         
         _mainHud.Close();
     }
@@ -33,7 +33,7 @@ public class PlayingState : BaseGameState
         _level.UpdateTime();
     }
 
-    private void LevelUp() => _gameStateSwitcher.SwitchState<PreparationState>();
+    private void LevelUp() => _gameStateSwitcher.SwitchState<LevelUpState>();
     
-    private void Restart() => SceneLoader.LoadMain();    
+    private void Lose() => _gameStateSwitcher.SwitchState<GameOverState>();    
 }
