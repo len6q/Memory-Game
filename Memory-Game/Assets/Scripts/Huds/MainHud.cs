@@ -11,7 +11,7 @@ public class MainHud : MonoBehaviour, IHud
    
     public void SetInGameText(int currentLevel, float timeValue)
     {
-        _nameField.text = $"LEVEL {currentLevel}";
+        _nameField.text = $"{Words.Level} {currentLevel}";
         _scoreField.text = timeValue.ToString("0.0");
     }    
 

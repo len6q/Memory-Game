@@ -22,9 +22,7 @@ public class PlayingState : BaseGameState
     {      
         _level.Unload();
         _level.OnLevelUp -= LevelUp;
-        _level.OnLostGame -= Lose;
-        
-        _mainHud.Close();
+        _level.OnLostGame -= Lose;                
     }
 
     public override void Tick()
@@ -33,7 +31,7 @@ public class PlayingState : BaseGameState
         _level.UpdateTime();
     }
 
-    private void LevelUp() => _gameStateSwitcher.SwitchState<LevelUpState>();
+    private void LevelUp() => _gameStateSwitcher.SwitchState<PreparationState>();
     
     private void Lose() => _gameStateSwitcher.SwitchState<GameOverState>();    
 }

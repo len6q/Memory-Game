@@ -21,7 +21,7 @@ public class Game : IInitializable, ITickable, IGameStateSwitcher
         _startupHud = startupHud;
         _gameOverHud = gameOverHud;
         _levelUpHud = levelUpHud;
-        _level = level;
+        _level = level;        
     }
 
     public void Initialize()

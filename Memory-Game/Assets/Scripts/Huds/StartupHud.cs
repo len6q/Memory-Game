@@ -13,8 +13,8 @@ public class StartupHud : MonoBehaviour, IHud, IPointerClickHandler
 
     private void SetText()
     {
-        _nameField.text = "MEMORY GAME";
-        _scoreField.text = $"BEST SCORE: {PlayerOptions.BestScore}";
+        _nameField.text = Words.GameName;
+        _scoreField.text = $"{Words.BestScore} {PlayerOptions.BestScore}";
     }
 
     public void Close() => _canvasGroup.Close();

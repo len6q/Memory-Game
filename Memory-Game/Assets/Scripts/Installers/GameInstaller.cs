@@ -7,6 +7,8 @@ public class GameInstaller : MonoInstaller
 
     public override void InstallBindings()
     {        
+        LocalisationSystem.Load();
+
         Container.BindInstance(_levelConfig);
         Container.BindInterfacesAndSelfTo<Level>().AsSingle();
         Container.BindInterfacesAndSelfTo<Game>().AsSingle();

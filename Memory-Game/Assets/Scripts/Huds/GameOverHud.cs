@@ -16,9 +16,9 @@ public class GameOverHud : MonoBehaviour, IHud
 
     private void Show()
     {
-        _nameField.text = "Время истекло";
-        _secondField.text = "Получить второй шанс?";
-        _showAdsButtonText.text = "Да";
+        _nameField.text = Words.Time;
+        _secondField.text = Words.Chance;
+        _showAdsButtonText.text = Words.Yes;
     }
 
     public void Close() => _canvasGroup.Close();
