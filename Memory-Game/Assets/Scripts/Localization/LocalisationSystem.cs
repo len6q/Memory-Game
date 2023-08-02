@@ -5,6 +5,11 @@ public static class LocalisationSystem
 {
     private static Dictionary<string, string> _enDictionary;
     private static Dictionary<string, string> _ruDictionary;
+    private static Dictionary<string, string> _snDictionary;
+    private static Dictionary<string, string> _prDictionary;
+    private static Dictionary<string, string> _frDictionary;
+    private static Dictionary<string, string> _itDictionary;
+    private static Dictionary<string, string> _grDictionary;
 
     private static Language _language;
 
@@ -17,6 +22,11 @@ public static class LocalisationSystem
 
         _enDictionary = csvLoader.GetDictionaryValues("en");
         _ruDictionary = csvLoader.GetDictionaryValues("ru");
+        _snDictionary = csvLoader.GetDictionaryValues("sn");
+        _prDictionary = csvLoader.GetDictionaryValues("pr");
+        _frDictionary = csvLoader.GetDictionaryValues("fr");
+        _itDictionary = csvLoader.GetDictionaryValues("it");
+        _grDictionary = csvLoader.GetDictionaryValues("gr");
     }
 
     public static string Get(string key)
@@ -27,6 +37,11 @@ public static class LocalisationSystem
         {
             case Language.English: _enDictionary.TryGetValue(key, out value); return value;
             case Language.Russian: _ruDictionary.TryGetValue(key, out value); return value;            
+            case Language.Spanish: _snDictionary.TryGetValue(key, out value); return value;            
+            case Language.Portuguese: _prDictionary.TryGetValue(key, out value); return value;            
+            case Language.French: _frDictionary.TryGetValue(key, out value); return value;            
+            case Language.Italian: _itDictionary.TryGetValue(key, out value); return value;            
+            case Language.German: _grDictionary.TryGetValue(key, out value); return value;            
         }
         return value;
     }

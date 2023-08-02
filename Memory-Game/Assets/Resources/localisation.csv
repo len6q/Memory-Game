@@ -1,7 +1,7 @@
-"key","en","ru"
-"game_name","memory game","игра на память",
-"best_score","best score:","лучший результат:",
-"level","level","уровень",
-"time","time's up!","время истекло!",
-"chance","get a second chance?","получить второй шанс?",
-"yes","yes!","да!",
+"key","en","ru","sn","pr","fr","it","gr"
+"game_name","memory game","игра на память","juego de memoria","jogo da memória","jeu de mémoire","gioco di memoria","Memory-Spiel",
+"best_score","best score:","лучший результат:","mejor puntuación:","melhor pontuação:","meilleur score :","miglior punteggio:","Beste Punktzahl:",
+"level","level","уровень","nivel","nível","niveau","livello","Level",
+"time","time's up!","время истекло!","¡se acabó el tiempo!","o tempo acabou!","le temps est écoulé !","tempo scaduto!","Die Zeit ist um!",
+"chance","get a second chance?","получить второй шанс?","¿tienes una segunda oportunidad?","Tem uma segunda chance?","Une seconde chance ?","hai una seconda possibilità?","Bekommst du eine zweite Chance?",
+"yes","yes!","да!","¡sí!","sim!","Oui, c'est ça !","Sì!","Ja!",
