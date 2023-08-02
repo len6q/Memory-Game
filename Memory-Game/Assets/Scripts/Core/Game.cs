@@ -10,13 +10,14 @@ public class Game : IInitializable, ITickable, IGameStateSwitcher
     private readonly LevelUpHud _levelUpHud;
     private readonly Level _level;
     private readonly CardsCollection _cardsCollection;
+    private readonly GameScenario _gameScenario;
 
     private List<BaseGameState> _allStates;
     private BaseGameState _currentState;
     
     public Game(
         MainHud mainHud, StartupHud startupHud, GameOverHud gameOverHud, LevelUpHud levelUpHud,
-        Level level, CardsCollection cardsCollection)
+        Level level, CardsCollection cardsCollection, GameScenario gameScenario)
     {
         _mainHud = mainHud;
         _startupHud = startupHud;
@@ -24,15 +25,16 @@ public class Game : IInitializable, ITickable, IGameStateSwitcher
         _levelUpHud = levelUpHud;
         _level = level;
         _cardsCollection = cardsCollection;
+        _gameScenario = gameScenario;
     }
 
     public void Initialize()
     {
         _allStates = new List<BaseGameState>
         {
-            new StartupState(this, _level, _startupHud,_cardsCollection),
-            new PreparationState(this, _level, _mainHud),
-            new PlayingState(this, _level, _mainHud, _cardsCollection),
+            new StartupState(this, _level, _startupHud,_cardsCollection, _gameScenario),
+            new PreparationState(this, _level, _mainHud, _gameScenario),
+            new PlayingState(this, _level, _mainHud, _cardsCollection, _gameScenario),
             new GameOverState(this, _level, _gameOverHud),
             new LevelUpState(this, _level, _levelUpHud)
         };

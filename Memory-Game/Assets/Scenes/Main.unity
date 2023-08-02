@@ -878,7 +878,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3f385eac488d2974bbdfad5d4a8690b3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _levelConfig: {fileID: 11400000, guid: 6508b7ab3e4b6d2418999d8e6f96ffd6, type: 2}
+  _gameScenario: {fileID: 11400000, guid: d82049d0b158019418fe23a226aded23, type: 2}
 --- !u!114 &301514714
 MonoBehaviour:
   m_ObjectHideFlags: 0

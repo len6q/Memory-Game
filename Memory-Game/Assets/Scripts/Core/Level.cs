@@ -5,13 +5,11 @@ public class Level
     public event Action OnLevelUp;
     public event Action OnLostGame;
 
-    private readonly CardChecker _cardChecker;
-    private readonly LevelConfig _config;    
+    private readonly CardChecker _cardChecker;    
 
-    public Level(CardChecker cardChecker, LevelConfig config)
+    public Level(CardChecker cardChecker)
     {
-        _cardChecker = cardChecker;
-        _config = config;        
+        _cardChecker = cardChecker;        
     }
 
     public float Time { get; private set; }
@@ -25,23 +23,19 @@ public class Level
 
     public void Unload() => _cardChecker.OnUpdateGame -= LevelUp;
 
-    public void Load()
-    {        
-        Time = _config.TimeValue / Current;
-        if (Time < 10) Time = 10;
+    public void Load(LevelConfig levelConfig)
+    {
+        Time = levelConfig.TimeValue;
+        Current = levelConfig.CurrentLevel;        
 
         _cardChecker.OnUpdateGame += LevelUp;
     }
 
     private void LevelUp()
     {        
-        PlayerOptions.BestScore = Current;
-        Current++;
+        PlayerOptions.BestScore = Current;        
         OnLevelUp?.Invoke();
     }
 
-    public void LoadStartupValues()
-    {
-        Current = _config.CurrentLevel;
-    }
+    public void LoadStartupValues(LevelConfig levelConfig) => Current = levelConfig.CurrentLevel;    
 }

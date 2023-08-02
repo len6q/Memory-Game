@@ -3,13 +3,13 @@ using Zenject;
 
 public class GameInstaller : MonoInstaller
 {    
-    [SerializeField] private LevelConfig _levelConfig;
+    [SerializeField] private GameScenario _gameScenario;
 
     public override void InstallBindings()
     {        
         LocalisationSystem.Load();
 
-        Container.BindInstance(_levelConfig);
+        Container.BindInstance(_gameScenario);
         Container.BindInterfacesAndSelfTo<Level>().AsSingle();
         Container.BindInterfacesAndSelfTo<Game>().AsSingle();
     }

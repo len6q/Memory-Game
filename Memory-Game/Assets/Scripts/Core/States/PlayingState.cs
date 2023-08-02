@@ -2,17 +2,19 @@ public class PlayingState : BaseGameState
 {
     private readonly MainHud _mainHud;
     private readonly CardsCollection _cardsCollection;
+    private readonly GameScenario _gameScenario;
 
-    public PlayingState(IGameStateSwitcher gameStateSwitcher, Level level, MainHud mainHud, CardsCollection cardsCollection)
+    public PlayingState(IGameStateSwitcher gameStateSwitcher, Level level, MainHud mainHud, CardsCollection cardsCollection, GameScenario gameScenario)
         : base(gameStateSwitcher, level)
     {
         _mainHud = mainHud;
         _cardsCollection = cardsCollection;
+        _gameScenario = gameScenario;
     }
 
     public override void Enter()
     {
-        _level.Load();
+        _level.Load(_gameScenario.CurrentLevel);
         _level.OnLevelUp += LevelUp;
         _level.OnLostGame += Lose;
         
