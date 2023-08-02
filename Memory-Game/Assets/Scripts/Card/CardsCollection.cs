@@ -1,9 +1,7 @@
-using System;
 using System.Collections.Generic;
 using UnityEngine;
-using Zenject;
 
-public class CardsCollection: IInitializable, IDisposable
+public class CardsCollection
 {
     private readonly List<CardData> _allCardsData = new();
     private readonly List<Card> _allCards = new();    
@@ -22,26 +20,28 @@ public class CardsCollection: IInitializable, IDisposable
         _parentTransform = parentTransform;
     }
 
-    public void Initialize()
+    public void Init()
     {
         InitCardData();
         _allCardsData.ForEach(card => InitCard(card));
 
-        _cardChecker.OnCardsGuessed += IsCardsGuessed;
-        _cardChecker.OnUpdateGame += Refresh;
+        _cardChecker.OnCardsGuessed += IsCardsGuessed;        
     }
 
-    public void Dispose()
+    public void Destroy()
     {
-        _cardChecker.OnCardsGuessed -= IsCardsGuessed;
-        _cardChecker.OnUpdateGame -= Refresh;
+        _cardChecker.OnCardsGuessed -= IsCardsGuessed;        
+
+        _allCards.ForEach(card => card.Refresh());
+        _allCards.Clear();
+        _allCardsData.Clear();
     }
 
     private void RandomSort(List<CardData> allCardsData)
     {
         for (int i = 0; i < allCardsData.Count; i++)
         {
-            int tempIndex = UnityEngine.Random.Range(0, allCardsData.Count);
+            int tempIndex = Random.Range(0, allCardsData.Count);
             (allCardsData[tempIndex], allCardsData[i]) = (allCardsData[i], allCardsData[tempIndex]);
         }
     }
@@ -62,16 +62,6 @@ public class CardsCollection: IInitializable, IDisposable
         card.Init(cardData.Id, cardData.FrontSprite, cardData.BackSprite);
 
         _allCards.Add(card);
-    }
-
-    private void Refresh()
-    {
-        RandomSort(_allCardsData);
-        
-        for (int i = 0; i < _allCardsData.Count; i++)
-        {            
-            _allCards[i].Init(_allCardsData[i].Id, _allCardsData[i].FrontSprite, _allCardsData[i].BackSprite);
-        }
     }
 
     private bool IsCardsGuessed()

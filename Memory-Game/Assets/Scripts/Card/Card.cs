@@ -31,6 +31,8 @@ public class Card : MonoBehaviour, ICardStateSwitcher
         _cardView.sprite = _backSprite;
     }
 
+    public void Refresh() => Destroy(gameObject);
+
     public void Open() => _currentState.Open();    
 
     public void Close() => _currentState.Close();

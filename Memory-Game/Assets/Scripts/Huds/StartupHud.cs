@@ -25,5 +25,7 @@ public class StartupHud : MonoBehaviour, IHud, IPointerClickHandler
         SetText();
     }
 
-    public void OnPointerClick(PointerEventData eventData) => OnClick?.Invoke();    
+    public void OnPointerClick(PointerEventData eventData) => OnClick?.Invoke();
+
+    public void Inactive() => _canvasGroup.Inactive();    
 }

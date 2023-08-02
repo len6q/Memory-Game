@@ -27,5 +27,7 @@ public class GameOverHud : MonoBehaviour, IHud
     {
         Show();
         _canvasGroup.Open();
-    }    
+    }
+
+    public void Inactive() => _canvasGroup.Inactive();    
 }

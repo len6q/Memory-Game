@@ -25,5 +25,7 @@ public class MainHud : MonoBehaviour, IHud
         _canvasGroup.Open();
     }
     
-    public void Close() => _canvasGroup.Close();    
+    public void Close() => _canvasGroup.Close();
+
+    public void Inactive() => _canvasGroup.Inactive();    
 }

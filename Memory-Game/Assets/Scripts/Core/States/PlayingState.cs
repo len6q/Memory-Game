@@ -1,11 +1,13 @@
 public class PlayingState : BaseGameState
 {
     private readonly MainHud _mainHud;
+    private readonly CardsCollection _cardsCollection;
 
-    public PlayingState(IGameStateSwitcher gameStateSwitcher, Level level, MainHud mainHud)
+    public PlayingState(IGameStateSwitcher gameStateSwitcher, Level level, MainHud mainHud, CardsCollection cardsCollection)
         : base(gameStateSwitcher, level)
     {
         _mainHud = mainHud;
+        _cardsCollection = cardsCollection;
     }
 
     public override void Enter()
@@ -20,7 +22,7 @@ public class PlayingState : BaseGameState
 
     public override void Exit()
     {      
-        _level.Unload();
+        _level.Unload();        
         _level.OnLevelUp -= LevelUp;
         _level.OnLostGame -= Lose;                
     }
@@ -31,7 +33,16 @@ public class PlayingState : BaseGameState
         _level.UpdateTime();
     }
 
-    private void LevelUp() => _gameStateSwitcher.SwitchState<PreparationState>();
-    
-    private void Lose() => _gameStateSwitcher.SwitchState<GameOverState>();    
+    private void LevelUp()
+    {
+        _cardsCollection.Destroy();
+        _cardsCollection.Init();
+        _gameStateSwitcher.SwitchState<PreparationState>();
+    }
+
+    private void Lose() 
+    {
+        _mainHud.Inactive();
+        _gameStateSwitcher.SwitchState<GameOverState>(); 
+    }
 }

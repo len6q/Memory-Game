@@ -26,4 +26,6 @@ public class LevelUpHud : MonoBehaviour, IHud
         Show();
         _canvasGroup.Open();
     }
+
+    public void Inactive() => _canvasGroup.Inactive();    
 }

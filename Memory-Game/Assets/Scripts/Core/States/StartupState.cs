@@ -1,11 +1,13 @@
 public class StartupState : BaseGameState
 {
     private readonly StartupHud _startupHud;
+    private readonly CardsCollection _cardsCollection;
 
-    public StartupState(IGameStateSwitcher gameStateSwitcher, Level level, StartupHud startupHud) 
+    public StartupState(IGameStateSwitcher gameStateSwitcher, Level level, StartupHud startupHud, CardsCollection cardsCollection) 
         : base(gameStateSwitcher, level)
     {
         _startupHud = startupHud;
+        _cardsCollection = cardsCollection;
     }
 
     public override void Enter()
@@ -19,6 +21,7 @@ public class StartupState : BaseGameState
     {
         _startupHud.Close();
         _startupHud.OnClick -= StartGame;
+        _cardsCollection.Init();
     }
 
     public override void Tick() { }

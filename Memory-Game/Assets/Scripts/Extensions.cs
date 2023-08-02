@@ -15,4 +15,10 @@ public static class Extensions
         canvasGroup.interactable = false;
         canvasGroup.blocksRaycasts = false;
     }
+
+    public static void Inactive(this CanvasGroup canvasGroup)
+    {
+        canvasGroup.interactable = false;
+        canvasGroup.blocksRaycasts = false;
+    }
 }

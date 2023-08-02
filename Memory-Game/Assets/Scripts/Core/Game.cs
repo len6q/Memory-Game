@@ -9,28 +9,30 @@ public class Game : IInitializable, ITickable, IGameStateSwitcher
     private readonly GameOverHud _gameOverHud;
     private readonly LevelUpHud _levelUpHud;
     private readonly Level _level;
+    private readonly CardsCollection _cardsCollection;
 
     private List<BaseGameState> _allStates;
     private BaseGameState _currentState;
     
     public Game(
         MainHud mainHud, StartupHud startupHud, GameOverHud gameOverHud, LevelUpHud levelUpHud,
-        Level level)
+        Level level, CardsCollection cardsCollection)
     {
         _mainHud = mainHud;
         _startupHud = startupHud;
         _gameOverHud = gameOverHud;
         _levelUpHud = levelUpHud;
-        _level = level;        
+        _level = level;
+        _cardsCollection = cardsCollection;
     }
 
     public void Initialize()
     {
         _allStates = new List<BaseGameState>
         {
-            new StartupState(this, _level, _startupHud),
+            new StartupState(this, _level, _startupHud,_cardsCollection),
             new PreparationState(this, _level, _mainHud),
-            new PlayingState(this, _level, _mainHud),
+            new PlayingState(this, _level, _mainHud, _cardsCollection),
             new GameOverState(this, _level, _gameOverHud),
             new LevelUpState(this, _level, _levelUpHud)
         };

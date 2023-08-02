@@ -1,11 +1,11 @@
 public class GameOverState : BaseGameState
 {
-    private readonly GameOverHud _gameOverHud;
+    private readonly GameOverHud _gameOverHud;    
 
     public GameOverState(IGameStateSwitcher gameStateSwitcher, Level level, GameOverHud gameOverHud)
         : base(gameStateSwitcher, level)
     {
-        _gameOverHud = gameOverHud;
+        _gameOverHud = gameOverHud;        
     }
 
     public override void Enter()
@@ -24,10 +24,7 @@ public class GameOverState : BaseGameState
 
     public override void Tick() { }
 
-    private void Restart() 
-    {
-        _gameStateSwitcher.SwitchState<PreparationState>();
-    }
-
+    private void Restart() => _gameStateSwitcher.SwitchState<PreparationState>();
+    
     private void Quit() => SceneLoader.LoadMain();
 }
