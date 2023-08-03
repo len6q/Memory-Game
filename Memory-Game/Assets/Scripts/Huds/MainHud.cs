@@ -9,10 +9,10 @@ public class MainHud : MonoBehaviour, IHud
     [SerializeField] private TextMeshProUGUI _scoreField;
     [SerializeField] private Image _tutorialHand;
    
-    public void SetInGameText(int currentLevel, float timeValue)
+    public void SetInGameText(GameScenario gameScenario)
     {
-        _nameField.text = $"{Words.Level} {currentLevel}";
-        _scoreField.text = timeValue.ToString("0.0");
+        _nameField.text = $"{Words.Level} {gameScenario.CurrentLevel}";
+        _scoreField.text = gameScenario.CurrentConfig.TimeValue.ToString("0.0");
     }    
 
     public void SetTimerText(float timeValue) => _scoreField.text = timeValue.ToString("0.0");

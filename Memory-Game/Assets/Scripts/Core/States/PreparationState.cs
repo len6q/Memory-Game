@@ -13,10 +13,10 @@ public class PreparationState : BaseGameState
     public override void Enter()
     {
         CardClicker.OnCardClick += CardClick;
-        _level.Load(_gameScenario.CurrentLevel);
+        _level.Load(_gameScenario);
 
         _mainHud.Open();
-        _mainHud.SetInGameText(_level.Current, _level.Time);
+        _mainHud.SetInGameText(_gameScenario);
     }
 
     public override void Exit()

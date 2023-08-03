@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 public class CardsCollection
@@ -20,9 +21,9 @@ public class CardsCollection
         _parentTransform = parentTransform;
     }
 
-    public void Init()
+    public void Init(LevelConfig levelConfig)
     {
-        InitCardData();
+        InitCardData(levelConfig.CardsCount);
         _allCardsData.ForEach(card => InitCard(card));
 
         _cardChecker.OnCardsGuessed += IsCardsGuessed;        
@@ -46,9 +47,9 @@ public class CardsCollection
         }
     }
 
-    private void InitCardData()
+    private void InitCardData(int countCards)
     {
-        foreach (CardData cardData in _partCardsData)
+        foreach (CardData cardData in _partCardsData.Take(countCards))
         {
             _allCardsData.Add(cardData);
             _allCardsData.Add(cardData);
@@ -68,7 +69,7 @@ public class CardsCollection
     {
         foreach(Card card in _allCards)
         {
-            if (card.TryOpen()) return false;            
+            if (card.TryOpen()) return false;                      
         }
         return true;
     }    

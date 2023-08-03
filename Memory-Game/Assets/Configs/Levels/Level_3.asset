@@ -14,4 +14,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _currentLevel: 3
   _maxTimeValue: 13
-  _cardsCount: 3
+  _cardsCount: 5

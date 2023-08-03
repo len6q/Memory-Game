@@ -1,6 +1,6 @@
 public class GameOverState : BaseGameState
 {
-    private readonly GameOverHud _gameOverHud;    
+    private readonly GameOverHud _gameOverHud;
 
     public GameOverState(IGameStateSwitcher gameStateSwitcher, Level level, GameOverHud gameOverHud)
         : base(gameStateSwitcher, level)

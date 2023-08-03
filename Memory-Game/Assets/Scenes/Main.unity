@@ -881,8 +881,6 @@ MonoBehaviour:
   _levelConfigs:
   - {fileID: 11400000, guid: 6508b7ab3e4b6d2418999d8e6f96ffd6, type: 2}
   - {fileID: 11400000, guid: c67eea0838610454aadd10d6a823237a, type: 2}
-  - {fileID: 11400000, guid: 8312b11be3391dc44bce6cd116171789, type: 2}
-  - {fileID: 11400000, guid: 481ff12044aebdf41b6cd9e1fd5442d3, type: 2}
 --- !u!114 &301514714
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1495,7 +1493,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &636218978
 RectTransform:
   m_ObjectHideFlags: 0
@@ -1543,7 +1541,7 @@ CanvasGroup:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 636218977}
   m_Enabled: 1
-  m_Alpha: 0
+  m_Alpha: 1
   m_Interactable: 1
   m_BlocksRaycasts: 1
   m_IgnoreParentGroups: 0
@@ -3129,7 +3127,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &2071557885
 RectTransform:
   m_ObjectHideFlags: 0
@@ -3178,7 +3176,7 @@ CanvasGroup:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2071557884}
   m_Enabled: 1
-  m_Alpha: 0
+  m_Alpha: 1
   m_Interactable: 1
   m_BlocksRaycasts: 1
   m_IgnoreParentGroups: 0

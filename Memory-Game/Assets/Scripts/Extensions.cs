@@ -7,6 +7,7 @@ public static class Extensions
         canvasGroup.alpha = 1;
         canvasGroup.interactable = true;
         canvasGroup.blocksRaycasts = true;
+        canvasGroup.gameObject.SetActive(true);
     }
 
     public static void Close(this CanvasGroup canvasGroup)
@@ -14,6 +15,7 @@ public static class Extensions
         canvasGroup.alpha = 0;
         canvasGroup.interactable = false;
         canvasGroup.blocksRaycasts = false;
+        canvasGroup.gameObject.SetActive(false);
     }
 
     public static void Inactive(this CanvasGroup canvasGroup)

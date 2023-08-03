@@ -23,7 +23,7 @@ public class StartupState : BaseGameState
     {
         _startupHud.Close();
         _startupHud.OnClick -= StartGame;
-        _cardsCollection.Init();
+        _cardsCollection.Init(_gameScenario.CurrentConfig);
     }
 
     public override void Tick() { }

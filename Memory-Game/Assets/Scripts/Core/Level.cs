@@ -23,10 +23,10 @@ public class Level
 
     public void Unload() => _cardChecker.OnUpdateGame -= LevelUp;
 
-    public void Load(LevelConfig levelConfig)
+    public void Load(GameScenario gameScenario)
     {
-        Time = levelConfig.TimeValue;
-        Current = levelConfig.CurrentLevel;        
+        Time = gameScenario.CurrentConfig.TimeValue;
+        Current = gameScenario.CurrentLevel;        
 
         _cardChecker.OnUpdateGame += LevelUp;
     }
@@ -37,5 +37,5 @@ public class Level
         OnLevelUp?.Invoke();
     }
 
-    public void LoadStartupValues(LevelConfig levelConfig) => Current = levelConfig.CurrentLevel;    
+    public void LoadStartupValues(int currentLevel) => Current = currentLevel;    
 }
