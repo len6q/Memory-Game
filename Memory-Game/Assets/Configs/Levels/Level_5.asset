@@ -12,6 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 779ffd53e509bae47b39545447beb120, type: 3}
   m_Name: Level_5
   m_EditorClassIdentifier: 
-  _startSeconds: 20
+  _startSeconds: 18
   _cardsCount: 5
   _constraintCount: 3
