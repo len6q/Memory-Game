@@ -12,6 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 779ffd53e509bae47b39545447beb120, type: 3}
   m_Name: Level_4
   m_EditorClassIdentifier: 
-  _currentLevel: 4
-  _maxTimeValue: 10
-  _cardsCount: 6
+  _startSeconds: 20
+  _cardsCount: 4
+  _constraintCount: 2

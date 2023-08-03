@@ -25,7 +25,7 @@ public class Level
 
     public void Load(GameScenario gameScenario)
     {
-        Time = gameScenario.CurrentConfig.TimeValue;
+        Time = gameScenario.CurrentConfig.StartSeconds;
         Current = gameScenario.CurrentLevel;        
 
         _cardChecker.OnUpdateGame += LevelUp;

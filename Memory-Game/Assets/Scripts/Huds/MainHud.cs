@@ -8,11 +8,13 @@ public class MainHud : MonoBehaviour, IHud
     [SerializeField] private TextMeshProUGUI _nameField;
     [SerializeField] private TextMeshProUGUI _scoreField;
     [SerializeField] private Image _tutorialHand;
+    [SerializeField] private GridLayoutGroup _layoutGroup;
    
     public void SetInGameText(GameScenario gameScenario)
     {
         _nameField.text = $"{Words.Level} {gameScenario.CurrentLevel}";
-        _scoreField.text = gameScenario.CurrentConfig.TimeValue.ToString("0.0");
+        _scoreField.text = gameScenario.CurrentConfig.StartSeconds.ToString("0.0");
+        _layoutGroup.constraintCount = gameScenario.CurrentConfig.ConstraintCount;
     }    
 
     public void SetTimerText(float timeValue) => _scoreField.text = timeValue.ToString("0.0");

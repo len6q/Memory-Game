@@ -881,6 +881,14 @@ MonoBehaviour:
   _levelConfigs:
   - {fileID: 11400000, guid: 6508b7ab3e4b6d2418999d8e6f96ffd6, type: 2}
   - {fileID: 11400000, guid: c67eea0838610454aadd10d6a823237a, type: 2}
+  - {fileID: 11400000, guid: 8312b11be3391dc44bce6cd116171789, type: 2}
+  - {fileID: 11400000, guid: 481ff12044aebdf41b6cd9e1fd5442d3, type: 2}
+  - {fileID: 11400000, guid: 8d64dc5e043504748946b4f2a755f600, type: 2}
+  - {fileID: 11400000, guid: 461bae5b3046f07458e670e7f3b5324d, type: 2}
+  - {fileID: 11400000, guid: 5f09edf45f2a04548aa5c758a9948455, type: 2}
+  - {fileID: 11400000, guid: 778bdb2e89a49c6419dd34b8cffc06b7, type: 2}
+  - {fileID: 11400000, guid: ae66b653664f03041b37e32e6993c01a, type: 2}
+  - {fileID: 11400000, guid: 58ad8efe410fb8c459a0dea31010e19f, type: 2}
 --- !u!114 &301514714
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3168,6 +3176,7 @@ MonoBehaviour:
   _nameField: {fileID: 1892641572}
   _scoreField: {fileID: 4157970}
   _tutorialHand: {fileID: 905023701}
+  _layoutGroup: {fileID: 4010195160516512059}
 --- !u!225 &2071557887
 CanvasGroup:
   m_ObjectHideFlags: 0
