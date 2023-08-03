@@ -1,9 +1,27 @@
+using System.Collections;
+using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class SceneLoader
+public class SceneLoader : MonoBehaviour
 {
-    public static void LoadMain()
+    private const string START_TRIGGER = "Start";
+    
+    [SerializeField] private Animator _transition;
+    [SerializeField] private float _transitionTime = 1f;
+
+    private static SceneLoader _instance;
+
+    private void Start()
     {
-        SceneManager.LoadScene("Main");
+        if (_instance == null) _instance = this;
+    }
+
+    public static void LoadMain() => _instance.StartCoroutine(_instance.LoadLevel("Main"));       
+    
+    private IEnumerator LoadLevel(string nameScene)
+    {
+        _transition.SetTrigger(START_TRIGGER);
+        yield return new WaitForSeconds(_transitionTime);
+        SceneManager.LoadScene(nameScene);
     }
 }
