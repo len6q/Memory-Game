@@ -878,7 +878,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3f385eac488d2974bbdfad5d4a8690b3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _gameScenario: {fileID: 11400000, guid: d82049d0b158019418fe23a226aded23, type: 2}
+  _levelConfigs:
+  - {fileID: 11400000, guid: 6508b7ab3e4b6d2418999d8e6f96ffd6, type: 2}
+  - {fileID: 11400000, guid: c67eea0838610454aadd10d6a823237a, type: 2}
+  - {fileID: 11400000, guid: 8312b11be3391dc44bce6cd116171789, type: 2}
+  - {fileID: 11400000, guid: 481ff12044aebdf41b6cd9e1fd5442d3, type: 2}
 --- !u!114 &301514714
 MonoBehaviour:
   m_ObjectHideFlags: 0

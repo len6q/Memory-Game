@@ -1,11 +1,15 @@
-using UnityEngine;
-
-[CreateAssetMenu(menuName = "Game Scenario")]
-public class GameScenario : ScriptableObject
+public class GameScenario 
 {
-    [SerializeField] private LevelConfig[] _levelConfigs;
-    [SerializeField] private int _firstLevelIndex = 0;
+    private readonly LevelConfig[] _levelConfigs;
+    
+    private int _currentLevel = 0;
 
-    public LevelConfig CurrentLevel => _levelConfigs[_firstLevelIndex]; 
-    public LevelConfig NextLevel => _levelConfigs[_firstLevelIndex++];
+    public GameScenario(LevelConfig[] levelConfigs)
+    {
+        _levelConfigs = levelConfigs;
+    }
+
+    public LevelConfig CurrentLevel => _levelConfigs[_currentLevel];
+
+    public void UpdateLevel() => _currentLevel++;
 }

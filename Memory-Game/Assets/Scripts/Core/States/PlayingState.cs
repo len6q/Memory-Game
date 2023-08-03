@@ -37,6 +37,7 @@ public class PlayingState : BaseGameState
 
     private void LevelUp()
     {
+        _gameScenario.UpdateLevel();
         _cardsCollection.Destroy();
         _cardsCollection.Init();
         _gameStateSwitcher.SwitchState<PreparationState>();
