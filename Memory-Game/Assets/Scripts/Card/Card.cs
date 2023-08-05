@@ -5,7 +5,7 @@ using System.Linq;
 
 public class Card : MonoBehaviour, ICardStateSwitcher
 {
-    [SerializeField] private Image _cardView;
+    [SerializeField] private Image _cardView;    
     
     private Sprite _frontSprite;
     private Sprite _backSprite;

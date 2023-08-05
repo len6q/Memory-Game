@@ -4,6 +4,8 @@ public class PlayerOptions
 {
     private const string BEST_SCORE = "BestScore";
     private const string SHOW_TUTOR = "Tutorial";
+    private const string PLAY_SOUNDS = "PlaySounds";
+    private const string PLAY_MUSIC = "PlayMusic";
 
     public static int BestScore
     {
@@ -28,6 +30,26 @@ public class PlayerOptions
                 return true;
             }
             return false;
+        }
+    }
+
+    public static bool IsPlaySounds
+    {
+        get => PlayerPrefs.GetInt(PLAY_SOUNDS) == 0;
+        set
+        {
+            if(value) PlayerPrefs.SetInt(PLAY_SOUNDS, 0);                
+            else PlayerPrefs.SetInt(PLAY_SOUNDS, -1);            
+        }
+    }
+
+    public static bool IsPlayMusic
+    {
+        get => PlayerPrefs.GetInt(PLAY_MUSIC) == 0;
+        set
+        {
+            if (value) PlayerPrefs.SetInt(PLAY_MUSIC, 0);
+            else PlayerPrefs.SetInt(PLAY_MUSIC, -1);
         }
     }
 }
