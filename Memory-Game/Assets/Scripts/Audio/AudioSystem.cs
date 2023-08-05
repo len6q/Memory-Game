@@ -45,8 +45,8 @@ public class AudioSystem : MonoBehaviour
         }
         else
         {
-            if (PlayerOptions.IsPlayMusic == false) return;
-            _instance._backgroundSource.Play();
+            if (PlayerOptions.IsPlayMusic) _instance._backgroundSource.Play();
+            else _instance._backgroundSource.Stop();
         }
     }
 }
