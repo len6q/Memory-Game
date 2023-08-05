@@ -13,12 +13,6 @@ public class StartupHud : MonoBehaviour, IHud, IPointerClickHandler
     [SerializeField] private Button _musicButton;
 
     public event Action OnClick;
-
-    private void SetText()
-    {
-        _nameField.text = Words.GameName;
-        _scoreField.text = $"{Words.BestScore} {PlayerOptions.BestScore}";
-    }
     
     public void Open()
     {
@@ -37,16 +31,27 @@ public class StartupHud : MonoBehaviour, IHud, IPointerClickHandler
 
     public void OnPointerClick(PointerEventData eventData) => OnClick?.Invoke();
 
-    public void Inactive() => _canvasGroup.Inactive();   
-    
+    public void Inactive() => _canvasGroup.Inactive();
+
+    private void SetText()
+    {
+        _nameField.text = Words.GameName;
+        _scoreField.text = $"{Words.BestScore} {PlayerOptions.BestScore}";
+
+        _soundButton.SetImage(PlayerOptions.IsPlaySounds);
+        _musicButton.SetImage(PlayerOptions.IsPlayMusic);
+    }
+
     private void ChangeSound()
     {
-        PlayerOptions.IsPlaySounds = !PlayerOptions.IsPlaySounds;        
+        PlayerOptions.IsPlaySounds = !PlayerOptions.IsPlaySounds;
+        _soundButton.SetImage(PlayerOptions.IsPlaySounds);
     }
 
     private void ChangeMusic()
     {
-        PlayerOptions.IsPlayMusic = !PlayerOptions.IsPlayMusic;        
+        PlayerOptions.IsPlayMusic = !PlayerOptions.IsPlayMusic;
+        _musicButton.SetImage(PlayerOptions.IsPlayMusic);
         AudioSystem.PlayMusic();
     }
 }
