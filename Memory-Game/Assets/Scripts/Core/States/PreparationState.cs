@@ -20,8 +20,7 @@ public class PreparationState : BaseGameState
     }
 
     public override void Exit()
-    {
-        _level.Unload();
+    {        
         _mainHud.Close();
         CardClicker.OnCardClick -= CardClick;
     }

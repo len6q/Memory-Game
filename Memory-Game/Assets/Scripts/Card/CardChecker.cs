@@ -20,6 +20,15 @@ public class CardChecker : MonoBehaviour
         CardClicker.OnCardClick -= CheckCard;
     }
 
+    public void CloseOpeningCards()
+    {
+        if(_anotherCard == null) return;
+
+        _anotherCard.Close();
+        _anotherCard = null;
+        _isCardsInProcessComparison = false;
+    }
+
     private void CheckCard(Card card)
     {  
         if (card.TryOpen() == false || _isCardsInProcessComparison) return;

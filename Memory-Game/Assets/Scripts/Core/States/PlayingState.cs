@@ -15,8 +15,7 @@ public class PlayingState : BaseGameState
     }
 
     public override void Enter()
-    {
-        _level.Load(_gameScenario);
+    {        
         _level.OnLevelUp += LevelUp;
         _level.OnLostGame += Lose;
         
@@ -28,7 +27,8 @@ public class PlayingState : BaseGameState
     {      
         _level.Unload();        
         _level.OnLevelUp -= LevelUp;
-        _level.OnLostGame -= Lose;                
+        _level.OnLostGame -= Lose;
+        _cardsCollection.CloseOpeningCards();
     }
 
     public override void Tick()

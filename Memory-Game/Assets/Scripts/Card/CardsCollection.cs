@@ -38,6 +38,8 @@ public class CardsCollection
         _allCardsData.Clear();
     }
 
+    public void CloseOpeningCards() => _cardChecker.CloseOpeningCards();
+    
     private void RandomSort(List<CardData> allCardsData)
     {
         for (int i = 0; i < allCardsData.Count; i++)

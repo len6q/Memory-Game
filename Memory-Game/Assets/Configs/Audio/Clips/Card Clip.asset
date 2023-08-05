@@ -13,4 +13,4 @@ MonoBehaviour:
   m_Name: Card Clip
   m_EditorClassIdentifier: Assembly-CSharp::ClipConfig
   _name: Card
-  _clip: {fileID: 8300000, guid: aa1ca950385da8948baa06e26033c862, type: 3}
+  _clip: {fileID: 8300000, guid: 1396b61728e5d2041ac3afa7015dcfdc, type: 3}
