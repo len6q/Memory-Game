@@ -13,8 +13,7 @@ public class StartupState : BaseGameState
     }
 
     public override void Enter()
-    {
-        Dll.Load();
+    {        
         Dll.ShowAdsInternal();
         _level.LoadStartupValues(_gameScenario.CurrentLevel);
         _startupHud.Open();        
