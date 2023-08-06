@@ -43,8 +43,7 @@ public class PlayerOptions : MonoBehaviour
 
     private void Awake() 
     {
-        if(_instance == null) _instance = this;
-        Dll.Load();
+        if(_instance == null) _instance = this;        
     }
     
     public static void Save()
