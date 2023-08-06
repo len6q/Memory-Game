@@ -12,6 +12,7 @@ public class PreparationState : BaseGameState
 
     public override void Enter()
     {
+        PlayerOptions.Save();
         CardClicker.OnCardClick += CardClick;
         _level.Load(_gameScenario);
 

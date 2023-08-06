@@ -24,7 +24,11 @@ public class GameOverState : BaseGameState
 
     public override void Tick() { }
 
-    private void Restart() => _gameStateSwitcher.SwitchState<PreparationState>();
-    
-    private void Quit() => SceneLoader.LoadMain();
+    private void Restart()
+    {
+        Dll.ShowAdsRewarded();
+        _gameStateSwitcher.SwitchState<PreparationState>();
+    }
+
+    private void Quit() => SceneLoader.LoadMain();    
 }

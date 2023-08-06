@@ -54,7 +54,7 @@ public class PlayingState : BaseGameState
             _isShowGameOverHud = true;
         }
         else
-        {
+        {            
             SceneLoader.LoadMain();
         }
     }

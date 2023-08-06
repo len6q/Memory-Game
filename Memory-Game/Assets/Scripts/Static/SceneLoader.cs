@@ -16,7 +16,10 @@ public class SceneLoader : MonoBehaviour
         if (_instance == null) _instance = this;        
     }
 
-    public static void LoadMain() => _instance.StartCoroutine(_instance.LoadLevel("Main"));       
+    public static void LoadMain()
+    {
+        _instance.StartCoroutine(_instance.LoadLevel("Main"));
+    }
     
     private IEnumerator LoadLevel(string nameScene)
     {

@@ -21,7 +21,7 @@ public class AudioSystem : MonoBehaviour
         if(_instance == null) _instance = this;
         
         _backgroundSource.clip = _config.Music;
-        if(PlayerOptions.IsPlayMusic) _backgroundSource.Play();                
+        if(PlayerOptions.IsPlayMusic) _backgroundSource.Play();
     }
 
     public static void PlaySound(string objectName)

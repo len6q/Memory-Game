@@ -1,55 +1,61 @@
 using UnityEngine;
 
-public class PlayerOptions
-{
-    private const string BEST_SCORE = "BestScore";
-    private const string SHOW_TUTOR = "Tutorial";
-    private const string PLAY_SOUNDS = "PlaySounds";
-    private const string PLAY_MUSIC = "PlayMusic";
+public class PlayerOptions : MonoBehaviour
+{    
+    public PlayerData PlayerData;
+    
+    private static PlayerOptions _instance;
 
     public static int BestScore
     {
-        get => PlayerPrefs.GetInt(BEST_SCORE);
+        get => _instance.PlayerData.BestScore;
         set
         {
-            if (PlayerPrefs.HasKey(BEST_SCORE) == false)
-                PlayerPrefs.SetInt(BEST_SCORE, 0);
-
-            if (value > BestScore)
-                PlayerPrefs.SetInt(BEST_SCORE, value);
+            if(value > _instance.PlayerData.BestScore)
+            {
+                _instance.PlayerData.BestScore = value;
+                Dll.SetToLeaderboard(value);
+            }
         }
     }
 
     public static bool IsShowTutorial
     {
-        get
+        get 
         {
-            if (PlayerPrefs.HasKey(SHOW_TUTOR) == false)
-            {
-                PlayerPrefs.SetInt(SHOW_TUTOR, 0);
-                return true;
-            }
-            return false;
+            bool isShow = _instance.PlayerData.IsShowTutorial;
+            if (isShow) _instance.PlayerData.IsShowTutorial = false;            
+            return isShow;
         }
     }
 
     public static bool IsPlaySounds
     {
-        get => PlayerPrefs.GetInt(PLAY_SOUNDS) == 0;
-        set
-        {
-            if(value) PlayerPrefs.SetInt(PLAY_SOUNDS, 0);                
-            else PlayerPrefs.SetInt(PLAY_SOUNDS, -1);            
-        }
+        get => _instance.PlayerData.IsPlaySounds;
+        set => _instance.PlayerData.IsPlaySounds = value;
     }
 
     public static bool IsPlayMusic
     {
-        get => PlayerPrefs.GetInt(PLAY_MUSIC) == 0;
-        set
-        {
-            if (value) PlayerPrefs.SetInt(PLAY_MUSIC, 0);
-            else PlayerPrefs.SetInt(PLAY_MUSIC, -1);
-        }
+        get => _instance.PlayerData.IsPlayMusic;
+        set => _instance.PlayerData.IsPlayMusic = value;
     }
+
+    private void Awake() 
+    {
+        if(_instance == null) _instance = this;
+        Dll.Load();
+    }
+    
+    public static void Save()
+    {
+        string jsonString = JsonUtility.ToJson(_instance.PlayerData);
+        Dll.Save(jsonString);
+    }
+
+    public void Load(string date) => _instance.PlayerData = JsonUtility.FromJson<PlayerData>(date);
+
+    public void OpenAds() => AudioSystem.PlayMusic(true);
+
+    public void CloseAds() => AudioSystem.PlayMusic();
 }

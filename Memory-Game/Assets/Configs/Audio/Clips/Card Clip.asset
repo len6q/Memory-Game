@@ -9,8 +9,8 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 0}
+  m_Script: {fileID: 11500000, guid: e31e34d8013c0314f8ed84eae2a3aaaa, type: 3}
   m_Name: Card Clip
-  m_EditorClassIdentifier: Assembly-CSharp::ClipConfig
+  m_EditorClassIdentifier: 
   _name: Card
   _clip: {fileID: 8300000, guid: 1396b61728e5d2041ac3afa7015dcfdc, type: 3}
