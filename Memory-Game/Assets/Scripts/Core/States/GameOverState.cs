@@ -1,16 +1,20 @@
 public class GameOverState : BaseGameState
 {
     private readonly GameOverHud _gameOverHud;
+    private readonly GameScenario _scenario;
 
-    public GameOverState(IGameStateSwitcher gameStateSwitcher, Level level, GameOverHud gameOverHud)
+    public GameOverState(IGameStateSwitcher gameStateSwitcher, Level level, GameOverHud gameOverHud, GameScenario scenario)
         : base(gameStateSwitcher, level)
     {
-        _gameOverHud = gameOverHud;        
+        _gameOverHud = gameOverHud;
+        _scenario = scenario;
     }
 
     public override void Enter()
     {
         _gameOverHud.Open();
+        _gameOverHud.SetAdsText(_scenario.CurrentConfig.StartSeconds);
+
         _gameOverHud.ShowAdsButton.onClick.AddListener(Restart);
         _gameOverHud.CancelButton.onClick.AddListener(Quit);
     }

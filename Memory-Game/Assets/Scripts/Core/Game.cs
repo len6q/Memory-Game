@@ -35,7 +35,7 @@ public class Game : IInitializable, ITickable, IGameStateSwitcher
             new StartupState(this, _level, _startupHud,_cardsCollection, _gameScenario),
             new PreparationState(this, _level, _mainHud, _gameScenario),
             new PlayingState(this, _level, _mainHud, _cardsCollection, _gameScenario),
-            new GameOverState(this, _level, _gameOverHud),
+            new GameOverState(this, _level, _gameOverHud, _gameScenario),
             new LevelUpState(this, _level, _levelUpHud)
         };
         _currentState = _allStates[0];

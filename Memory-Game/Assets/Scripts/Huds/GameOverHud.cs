@@ -17,8 +17,7 @@ public class GameOverHud : MonoBehaviour, IHud
     private void Show()
     {
         _nameField.text = Words.Time;
-        _secondField.text = Words.Chance;
-        _showAdsButtonText.text = Words.Yes;
+        _secondField.text = Words.Chance;        
     }
 
     public void Close() => _canvasGroup.Close();
@@ -29,5 +28,7 @@ public class GameOverHud : MonoBehaviour, IHud
         _canvasGroup.Open();
     }
 
+    public void SetAdsText(float time) => _showAdsButtonText.text = $"{Words.Yes} (+{time} sec)";
+    
     public void Inactive() => _canvasGroup.Inactive();    
 }
