@@ -3074,7 +3074,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "\u0418\u0433\u0440\u0430 \u043D\u0430 \u043F\u0430\u043C\u044F\u0442\u044C"
+  m_text: Entrenador de memoria
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: cde599cc36985f24fb445e4a9d06e0e9, type: 2}
   m_sharedMaterial: {fileID: -427514362303125080, guid: cde599cc36985f24fb445e4a9d06e0e9, type: 2}
@@ -3101,7 +3101,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 230
+  m_fontSize: 153.85
   m_fontSizeBase: 230
   m_fontWeight: 400
   m_enableAutoSizing: 1
