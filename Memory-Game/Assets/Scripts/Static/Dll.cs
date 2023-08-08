@@ -20,6 +20,9 @@ public class Dll
     [DllImport("__Internal")]
     private static extern void ShowAdsRewardedExtern();
 
+    [DllImport("__Internal")]
+    private static extern void RateGameExtern();
+
 
     public static string GetLanguage() => GetLanguageExtern();
     public static void Load() => LoadExtern();
@@ -27,4 +30,5 @@ public class Dll
     public static void SetToLeaderboard(int value) => SetToLeaderboardExtern(value); 
     public static void ShowAdsInternal() => ShowAdsInternalExtern(); 
     public static void ShowAdsRewarded() => ShowAdsRewardedExtern(); 
+    public static void RateGame() => RateGameExtern();
 }

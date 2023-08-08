@@ -1,5 +1,4 @@
 using System.Collections.Generic;
-using UnityEngine;
 
 public static class LocalisationSystem
 {
@@ -15,7 +14,7 @@ public static class LocalisationSystem
 
     public static void Load()
     {
-        ChooseLanguage();
+        _language = ChooseLanguage();
 
         var csvLoader = new CSVLoader();
         csvLoader.LoadCSV();
@@ -46,39 +45,19 @@ public static class LocalisationSystem
         return value;
     }
 
-    private static void ChooseLanguage()
+    private static Language ChooseLanguage()
     {
-        SystemLanguage language = Application.systemLanguage;
-        if (language == SystemLanguage.Belarusian || language == SystemLanguage.Russian
-            || language == SystemLanguage.Ukrainian)
+        string lang = Dll.GetLanguage();
+        return lang switch
         {
-            _language = Language.Russian;
-        }
-        else if (language == SystemLanguage.Catalan || language == SystemLanguage.Spanish)
-        {
-            _language = Language.Spanish;
-        }
-        else if (language == SystemLanguage.Danish || language == SystemLanguage.Dutch
-            || language == SystemLanguage.Faroese || language == SystemLanguage.German)
-        {
-            _language = Language.German;
-        }
-        else if (language == SystemLanguage.French)
-        {
-            _language = Language.French;
-        }
-        else if (language == SystemLanguage.Italian)
-        {
-            _language = Language.Italian;
-        }
-        else if (language == SystemLanguage.Portuguese)
-        {
-            _language = Language.Portuguese;
-        }
-        else
-        {
-            _language = Language.English;
-        }
+            "ru" => Language.Russian,
+            "es" => Language.Spanish,
+            "de" => Language.German,
+            "fr" => Language.French,
+            "it" => Language.Italian,
+            "pt" => Language.Portuguese,
+            _ => Language.English,
+        };
     }
 }
 

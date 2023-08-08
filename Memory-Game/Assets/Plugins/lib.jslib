@@ -68,4 +68,18 @@ GetLanguageExtern: function (){
 		stringToUTF8(lang, buffer, bufferSize);
 		return buffer;
 	},
+	
+RateGameExtern: function (){
+		ysdk.feedback.canReview()
+			.then(({ value, reason }) => {
+				if (value) {
+					ysdk.feedback.requestReview()
+						.then(({ feedbackSent }) => {
+							console.log(feedbackSent);
+						})
+				} else {
+					console.log(reason)
+				}
+			})
+	},
 });

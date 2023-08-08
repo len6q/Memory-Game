@@ -18,6 +18,7 @@ public class SceneLoader : MonoBehaviour
 
     public static void LoadMain()
     {
+        Dll.RateGame();
         _instance.StartCoroutine(_instance.LoadLevel("Main"));
     }
     

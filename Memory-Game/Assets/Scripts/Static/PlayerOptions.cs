@@ -45,6 +45,7 @@ public class PlayerOptions : MonoBehaviour
     {
         if(_instance == null) _instance = this;
         Dll.Load();
+        DontDestroyOnLoad(gameObject);
     }
     
     public static void Save()
