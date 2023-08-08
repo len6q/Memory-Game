@@ -11,7 +11,7 @@ public static class LocalisationSystem
     private static Dictionary<string, string> _itDictionary;
     private static Dictionary<string, string> _grDictionary;
 
-    private static Language _language = Language;
+    private static Language _language;
 
     public static void Load()
     {
