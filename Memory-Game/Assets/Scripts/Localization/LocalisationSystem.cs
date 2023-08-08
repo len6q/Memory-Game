@@ -11,11 +11,11 @@ public static class LocalisationSystem
     private static Dictionary<string, string> _itDictionary;
     private static Dictionary<string, string> _grDictionary;
 
-    private static Language _language = Language.English;
+    private static Language _language = Language;
 
     public static void Load()
     {
-        //ChooseLanguage();
+        ChooseLanguage();
 
         var csvLoader = new CSVLoader();
         csvLoader.LoadCSV();
