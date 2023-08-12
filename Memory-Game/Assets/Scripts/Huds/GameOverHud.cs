@@ -28,7 +28,7 @@ public class GameOverHud : MonoBehaviour, IHud
         _canvasGroup.Open();
     }
 
-    public void SetAdsText(float time) => _showAdsButtonText.text = $"{Words.Yes} (+{time} sec)";
+    public void SetAdsText(float time) => _showAdsButtonText.text = $"{Words.Yes} (+{time} {Words.Sec})";
     
     public void Inactive() => _canvasGroup.Inactive();    
 }
