@@ -13,5 +13,5 @@ MonoBehaviour:
   m_Name: Audio Config
   m_EditorClassIdentifier: 
   _audioClips:
-  - {fileID: 11400000, guid: 11e62b27fc42b3440b778f2188598355, type: 2}
+  - {fileID: 11400000, guid: 829682c3b428b5244bd02b446d5bb224, type: 2}
   _music: {fileID: 8300000, guid: 612a37c3b8925e045b4612fd857463bd, type: 3}
