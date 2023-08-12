@@ -14,7 +14,7 @@ public static class LocalisationSystem
 
     public static void Load()
     {
-        _language = ChooseLanguage();
+       _language = ChooseLanguage();
 
         var csvLoader = new CSVLoader();
         csvLoader.LoadCSV();
