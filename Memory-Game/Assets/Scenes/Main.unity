@@ -1105,7 +1105,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &363321711
 RectTransform:
   m_ObjectHideFlags: 0
@@ -1704,7 +1704,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &905023699
 RectTransform:
   m_ObjectHideFlags: 0
@@ -3890,7 +3890,7 @@ MonoBehaviour:
   m_CellSize: {x: 280, y: 320}
   m_Spacing: {x: 40, y: 12}
   m_Constraint: 1
-  m_ConstraintCount: 2
+  m_ConstraintCount: 3
 --- !u!114 &4010195160516512060
 MonoBehaviour:
   m_ObjectHideFlags: 0
